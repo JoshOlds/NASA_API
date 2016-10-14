@@ -1,6 +1,8 @@
 $(document).foundation();
 
 var nasaService = new NasaService();
+var zippopotamusService = new ZippopotamusService();
+
 var pages = [
     $('#earth-page'),
     $('#apod-page'),
@@ -145,6 +147,20 @@ $('#nav-epic').on('click', function(e){
     if(!epicDatesFlag){
         updateEPICdates();
     }
+})
+
+$('#form-earth-zip').on('submit', function(e){
+    e.preventDefault();
+    var zip = $('#input-earth-zip').val();
+    zippopotamusService.getZipData(zip).then(
+        function(data){
+            $('#input-earth-lon').val(data.places[0].longitude)
+            $('#input-earth-lat').val(data.places[0].latitude)
+        })
+        .catch(function(data){
+            $('#input-earth-lon').val("0.0")
+            $('#input-earth-lat').val("0.0")
+        })
 })
 
 $('#form-earth').on('submit', function(e){

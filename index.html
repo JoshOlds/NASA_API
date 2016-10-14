@@ -36,6 +36,12 @@
         <p class="text-center">This tool pulls from NASA's <a href="https://api.nasa.gov/api.html#earth" target="_blank">EARTH</a> API.</p>
       </div>
       <div class="column small-12 large-3">
+        <form id=form-earth-zip>
+          <label>Zip Code
+            <input type="text" id="input-earth-zip" pattern="\d{5}-?(\d{4})?" placeholder="83705">
+            <button class="button" id="button-earth-zip-submit"><strong>Zip Code</strong> to Lat / Lon</button>
+          </label>
+        </form>
         <form id="form-earth">
           <label>Longitude
           <input type="text" id="input-earth-lon" required>
@@ -120,7 +126,7 @@
 
 
 
-
+  <script type="text/javascript" src="js/zippopotamus_service.js"></script>
   <script type="text/javascript" src="js/nasa_service.js"></script>
   <script type="text/javascript" src="js/app.js"></script>
 </body>
